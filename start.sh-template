@@ -3,5 +3,7 @@ export TWITTER_CONSUMER_KEY=add_your_token
 export TWITTER_CONSUMER_SECRET=add_your_token
 export TWITTER_ACCESS_TOKEN_KEY=add_your_token
 export TWITTER_ACCESS_TOKEN_SECRET=add_your_token
+export GITHUB_URL=github.com
+export GITHUB_PREFIX=api/v3
 
 exec bin/hubot -a slack --name myhubot
