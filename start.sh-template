@@ -1,0 +1,7 @@
+export HUBOT_SLACK_TOKEN=add_your_token
+export TWITTER_CONSUMER_KEY=add_your_token
+export TWITTER_CONSUMER_SECRET=add_your_token
+export TWITTER_ACCESS_TOKEN_KEY=add_your_token
+export TWITTER_ACCESS_TOKEN_SECRET=add_your_token
+
+exec bin/hubot -a slack --name myhubot
