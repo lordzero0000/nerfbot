@@ -1,6 +1,7 @@
 // Description:
 //   This bot will tweet shit for you.
 // Commands:
+//   tweet this <your_tweet>: This will tweet any quote after command.
 //   tweet it: this will tweet a random quote...
 //
 // Notes:
@@ -17,7 +18,8 @@ var Twitter = require('twitter'),
     }),
     postTweet = (tweet) => {
       var promise = new Promise((resolve, reject) => {
-        client.post('statuses/update', {status: tweet}, (error, tweet, response) => {
+        var opts = { status: tweet };
+        client.post('statuses/update', opts, (error, tweet, response) => {
           if(error) { return reject(error); };
           console.log(response.body);
           return resolve(response.body);
