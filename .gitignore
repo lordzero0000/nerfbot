@@ -31,3 +31,9 @@ node_modules
 
 # Optional REPL history
 .node_repl_history
+
+# Custom ignores
+start.sh
+Procfile
+.editorconfig
+.hubot_history
