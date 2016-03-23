@@ -2,7 +2,7 @@
 //   This bot will tweet shit for you.
 // Commands:
 //   tweet this <your_tweet>: This will tweet any quote after command.
-//   tweet it: this will tweet a random quote...
+//   tweet shit: this will tweet a random quote...
 //
 // Notes:
 // This may work... but everyone in the chat will tweet shit for you account... be careful...
@@ -16,6 +16,16 @@ var Twitter = require('twitter'),
       access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
       access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
     }),
+    quotes = [
+      "JoJo's Bizarre Adventure: Phantom Blood",
+      "JoJo's Bizarre Adventure: Battle Tendency",
+      "JoJo's Bizarre Adventure: Stardust Crusaders",
+      "JoJo's Bizarre Adventure: Diamond is Unbreakable",
+      "JoJo's Bizarre Adventure: Vento Aureo",
+      "JoJo's Bizarre Adventure: Stone Ocean",
+      "JoJo's Bizarre Adventure: Steel Ball Run",
+      "JoJo's Bizarre Adventure: JoJolion"
+    ],
     postTweet = (tweet) => {
       var promise = new Promise((resolve, reject) => {
         var opts = { status: tweet };
@@ -34,6 +44,15 @@ var Twitter = require('twitter'),
 module.exports = (robot) => {
   robot.respond(/tweet this (.*)/i, (res) => {
     var tweet = res.match[1];
+    postTweet(tweet)
+    .then((tweetRes) => {
+      return res.send("Tweeted!");
+    }).catch((err) => {
+      return res.send(err);
+    })
+  });
+  robot.respond(/tweet shit/i, (res) => {
+    var tweet = quotes[Math.floor(Math.random() * quotes.length)];
     postTweet(tweet)
     .then((tweetRes) => {
       return res.send("Tweeted!");
