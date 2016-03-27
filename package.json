@@ -6,6 +6,7 @@
   "description": "I will make you cry...",
   "dependencies": {
     "cleverbot.io": "^1.0.4",
+    "croner": "^1.1.2",
     "github": "^0.2.4",
     "hubot": "^2.18.0",
     "hubot-diagnostics": "0.0.1",
