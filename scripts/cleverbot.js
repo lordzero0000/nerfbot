@@ -22,8 +22,8 @@ var cleverbot = require('cleverbot.io'),
       return promise;
     };
 
-module.exports = function(robot) {
-  robot.respond(/(.*)/i, function(msg) {
+module.exports = (robot) => {
+  robot.respond(/(.*)/i, (msg) => {
     sendMessage(msg.message.user.name, msg.message.rawText)
     .then((response) => {
       return msg.reply(response);
