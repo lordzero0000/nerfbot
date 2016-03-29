@@ -35,7 +35,7 @@ module.exports = (robot) => {
       return res.send(stdout);
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
   robot.respond(/running containers/i, (res) => {
     executeCmd('docker ps')
@@ -43,7 +43,7 @@ module.exports = (robot) => {
       return res.send(stdout);
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
   robot.respond(/stop (.*)/i, (res) => {
     var container = res.match[1];
@@ -52,7 +52,7 @@ module.exports = (robot) => {
       return res.send("The container " + stdout.trim() + " is now stopped.");
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
   robot.respond(/run (.*) as (.*)/i, (res) => {
     var image = res.match[1],
@@ -62,6 +62,6 @@ module.exports = (robot) => {
       return res.send("Now running " + image + " as " + name + ".");
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
 };

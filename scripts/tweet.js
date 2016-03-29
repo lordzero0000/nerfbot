@@ -32,7 +32,6 @@ var Twitter = require('twitter'),
         var opts = { status: tweet };
         client.post('statuses/update', opts, (error, tweet, response) => {
           if(error) { return reject(error); };
-          console.log(response.body);
           return resolve(response.body);
         });
       });
@@ -50,7 +49,8 @@ var Twitter = require('twitter'),
       return promise;
     },
     getTweetUrl = (tweetInfo) => {
-      return "https://twitter.com/" + tweetInfo.user.screen_name + "/status/" + tweetInfo.id;
+      var tweet = JSON.parse(tweetInfo);
+      return "https://twitter.com/" + tweet.user.screen_name + "/status/" + tweet.id_str;
     };
 
 module.exports = (robot) => {
@@ -58,10 +58,10 @@ module.exports = (robot) => {
     var tweet = res.match[1];
     postTweet(tweet)
     .then((tweetRes) => {
-      return res.send("Tweeted!");
+      return res.send("Tweeted! Check it at: " + getTweetUrl(tweetRes));
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
   robot.respond(/get last (.*) tweets/i, (res) => {
     var count = Number.isInteger(parseInt(res.match[1])) ? res.match[1] : 10;
@@ -70,15 +70,15 @@ module.exports = (robot) => {
       return res.send("This are the last " + count + " tweets:\n" + (tweets.join("\n")));
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
   robot.respond(/tweet shit/i, (res) => {
     var tweet = quotes[Math.floor(Math.random() * quotes.length)];
     postTweet(tweet)
     .then((tweetRes) => {
-      return res.send("Tweeted!");
+      return res.send("Tweeted! Check it at: " + getTweetUrl(tweetRes));
     }).catch((err) => {
       return res.send(err);
-    })
+    });
   });
 };
