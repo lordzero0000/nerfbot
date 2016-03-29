@@ -1,6 +1,12 @@
 // Description:
 //   Example scripts for you to examine and try out.
 //
+// Commands:
+//   show images
+//   running containers
+//   run <image_name> as <container_name>
+//   stop <container_name>
+//
 // Notes:
 //   They are commented out by default, because most of them are pretty silly and
 //   wouldn't be useful and amusing enough for day to day huboting.
@@ -23,10 +29,6 @@ var exec = require('child_process').exec,
     };
 
 module.exports = (robot) => {
-  robot.respond(/open the (.*) door/i, (res) => {
-    var doorType = res.match[1];
-    return res.send("Opening " + doorType + " door");
-  });
   robot.respond(/show images/i, (res) => {
     executeCmd('docker images')
     .then((stdout) => {
