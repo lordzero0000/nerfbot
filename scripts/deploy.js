@@ -57,7 +57,7 @@ module.exports = (robot) => {
             }).catch((err) => {
               return msg.send(err);
             });
-            return msg.send("Now running " + image + "on " + stdout.trim());
+            return msg.send("Now running " + image + " on " + stdout.trim());
           }).catch((err) => {
             return msg.send("Could not deploy! " + err);
           });

@@ -23,13 +23,13 @@ var cleverbot = require('cleverbot.io'),
     };
 
 module.exports = (robot) => {
-  robot.respond(/(.*)/i, (msg) => {
-    sendMessage(msg.message.user.name, msg.message.rawText)
-    .then((response) => {
-      return msg.reply(response);
-    })
-    .catch((error) => {
-      return msg.send("ERROR: " + error);
-    });
-  });
+  // robot.respond(/(.*)/i, (msg) => {
+  //   sendMessage(msg.message.user.name, msg.message.rawText)
+  //   .then((response) => {
+  //     return msg.reply(response);
+  //   })
+  //   .catch((error) => {
+  //     return msg.send("ERROR: " + error);
+  //   });
+  // });
 };
