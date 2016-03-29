@@ -2,10 +2,10 @@
 //   Example scripts for you to examine and try out.
 //
 // Commands:
-//   show images
-//   running containers
-//   run <image_name> as <container_name>
-//   stop <container_name>
+//   show images - Show the local images.
+//   running containers - Show the running containers.
+//   run <image_name> as <container_name>: Run the indicated images as the given name.
+//   stop <container_name>: Stop the given container name.
 //
 // Notes:
 //   They are commented out by default, because most of them are pretty silly and
