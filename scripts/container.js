@@ -43,4 +43,23 @@ module.exports = (robot) => {
       return res.send(err);
     })
   });
+  robot.respond(/stop (.*)/i, (res) => {
+    var container = res.match[1];
+    executeCmd('docker stop ' + container)
+    .then((stdout) => {
+      return res.send("The container " + stdout.trim() + " is now stopped.");
+    }).catch((err) => {
+      return res.send(err);
+    })
+  });
+  robot.respond(/run (.*) as (.*)/i, (res) => {
+    var image = res.match[1],
+        name = res.match[2];
+    executeCmd('docker run -d -p 80:80 --name ' + name + ' ' + image)
+    .then((stdout) => {
+      return res.send("Now running " + image + " as " + name + ".");
+    }).catch((err) => {
+      return res.send(err);
+    })
+  });
 };
